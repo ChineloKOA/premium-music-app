@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import pandas as pd
 
 from music_helper.spotify_helper import SpotifyCalls
@@ -84,12 +86,12 @@ def create_dataframe(api):
 
 if __name__ == "__main__":
     client = SpotifyCalls.create_conn_str()
-    result = client.artist_search("fela", "artist")
-    # flatten_artist(result)
+    result = client.artist_albums("fela", "artist")
     print(result)
     df = create_dataframe(result)
-    df_ordered = df.iloc[:, [6, 5, 3, 7, 8, 2, 4, 1, 0]]
-    print(df_ordered)
+    print(df.iloc[0, 5])
+    # # df_ordered = df.iloc[:, [6, 5, 3, 7, 8, 2, 4, 1, 0]]
+    # # print(df_ordered)
 
     # df_left_aligned = df_ordered.style.set_properties(**{"text-align": "left"})
     # df_left_aligned = df_left_aligned.set_table_styles([dict(selector="th", props=[("text-align", "left")])])
